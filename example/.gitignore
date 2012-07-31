@@ -1,3 +1,4 @@
+/.lein*
 /pom.xml
 *jar
 /lib
