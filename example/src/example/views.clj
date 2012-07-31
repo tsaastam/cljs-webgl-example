@@ -6,6 +6,7 @@
 (defn index-page []
   (html5
    [:head
-    [:title "Hello Moon"]]
-   [:body
+    [:title "Hello Moon"]
+    (include-js "/js/main.js")]
+   [:body {:onload "example.hello.webgl_start();"}
     [:h1 "Hello Moon"]]))
