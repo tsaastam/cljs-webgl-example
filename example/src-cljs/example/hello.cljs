@@ -38,10 +38,17 @@
 (def camera
   {:position {:x 0 :y 0 :z -7}})
 
+(def textures
+  {:src ["moon.gif"]
+   :parameters [{:name "TEXTURE_MAG_FILTER" :value "LINEAR"}
+                {:name "TEXTURE_MIN_FILTER" :value "LINEAR_MIPMAP_NEAREST" :generateMipmap true}]})
+
 (defn webgl-start []
   (js/PhiloGL
    "gl-canvas"
    (to-js {:camera camera
+           
+           :textures textures
            
            :onError on-error
            
