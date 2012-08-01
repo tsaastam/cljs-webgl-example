@@ -18,6 +18,16 @@
                    :radius 2
                    :textures "moon.gif"})))
 
+(def last-pos (atom [0 0]))
+
+(defn on-drag-start [e]
+  (swap! last-pos (constantly [(.-x e) (.-y e)])))
+
+(defn on-drag-move [e]
+  (let [pos [(.-x e) (.-y e)]
+        delta-pos (vec (map - pos @last-pos))]
+    (swap! last-pos (constantly pos))))
+
 (defn on-error []
   (js/alert "There was an error creating the app."))
 
@@ -64,6 +74,9 @@
    (to-js {:camera camera
            
            :textures textures
+           
+           :events {:onDragStart on-drag-start
+                    :onDragMove on-drag-move}
            
            :onError on-error
            
