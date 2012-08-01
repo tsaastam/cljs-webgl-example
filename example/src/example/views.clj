@@ -9,4 +9,7 @@
     [:title "Hello Moon"]
     (include-js "/js/main.js")]
    [:body {:onload "example.hello.webgl_start();"}
-    [:h1 "Hello Moon"]]))
+    [:h1 "Hello Moon"]
+    [:canvas {:id "gl-canvas"
+              :width "500"
+              :height "500"}]]))
