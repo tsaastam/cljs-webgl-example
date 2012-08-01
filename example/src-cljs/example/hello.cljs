@@ -1,4 +1,5 @@
-(ns example.hello)
+(ns example.hello
+  (:require-macros [example.macros :as mac]))
 
 (defn to-js [x]
   (cond (map? x)
@@ -26,10 +27,8 @@
 (defn on-drag-move [e]
   (let [pos [(.-x e) (.-y e)]
         delta-pos (vec (map - pos @last-pos))]
-    (set! (.-y (.-rotation moon)) (+ (.-y (.-rotation moon))
-                                     (/ (delta-pos 0) 100)))
-    (set! (.-x (.-rotation moon)) (+ (.-x (.-rotation moon))
-                                     (/ (delta-pos 1) 100)))
+    (mac/inc! (.-y (.-rotation moon)) (/ (delta-pos 0) 100))
+    (mac/inc! (.-x (.-rotation moon)) (/ (delta-pos 1) 100))
     (.update moon)
     (swap! last-pos (constantly pos))))
 
