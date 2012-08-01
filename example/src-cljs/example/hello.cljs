@@ -26,6 +26,11 @@
 (defn on-drag-move [e]
   (let [pos [(.-x e) (.-y e)]
         delta-pos (vec (map - pos @last-pos))]
+    (set! (.-y (.-rotation moon)) (+ (.-y (.-rotation moon))
+                                     (/ (delta-pos 0) 100)))
+    (set! (.-x (.-rotation moon)) (+ (.-x (.-rotation moon))
+                                     (/ (delta-pos 1) 100)))
+    (.update moon)
     (swap! last-pos (constantly pos))))
 
 (defn on-error []
