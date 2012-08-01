@@ -12,6 +12,12 @@
 
         :else x))
 
+(def moon (js/PhiloGL.O3D.Sphere.
+           (to-js {:nlat 30
+                   :nlong 30
+                   :radius 2
+                   :textures "moon.gif"})))
+
 (defn on-error []
   (js/alert "There was an error creating the app."))
 
@@ -20,10 +26,19 @@
   (.clearDepth gl 1.0)
   (.enable gl (.-DEPTH_TEST gl))
   (.depthFunc gl (.-LEQUAL gl))
-  (.viewport gl 0 0 (.-width canvas) (.-height canvas)))
+  (.viewport gl 0 0 (.-width canvas) (.-height canvas))
+
+  (.add scene moon))
 
 (defn draw [canvas scene gl]
   (.clear gl (bit-or (.-COLOR_BUFFER_BIT gl) (.-DEPTH_BUFFER_BIT gl)))
+
+  (set! (.. scene -config -lights)
+        (to-js {:enable true
+                :ambient {:r 0.2 :g 0.2 :b 0.2}
+                :directional {:color {:r 0.8 :g 0.8 :b 0.8}
+                              :direction {:x -1.0 :y -1.0 :z -1.0}}}))
+                                          
   (.render scene))
 
 (defn on-load [app]
