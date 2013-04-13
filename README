@@ -1,13 +1,21 @@
-# example
+cljs-webgl-example
+==================
 
-FIXME: write description
+An example of how to use WebGL from ClojureScript.
 
-## Usage
+This code was originally written by Vishvajit Singh. Sources:
 
-FIXME: write
+* http://www.meetup.com/Los-Angeles-Clojure-Users-Group/events/74501052/
+* http://vishsingh.com/files/2012-08-cljstalk-demos.tar.gz
 
-## License
+Some mild modifications were made by Taneli Saastamoinen to make it work with
+Leiningen 2.
 
-Copyright (C) 2012 FIXME
+How to compile & run
+====================
 
-Distributed under the Eclipse Public License, the same as Clojure.
+    lein deps
+    lein cljsbuild once
+    lein ring server-headless 3000
+
+Then browse to http://localhost:3000
