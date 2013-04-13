@@ -8,7 +8,7 @@ This code was originally written by Vishvajit Singh. Sources:
 * http://www.meetup.com/Los-Angeles-Clojure-Users-Group/events/74501052/
 * http://vishsingh.com/files/2012-08-cljstalk-demos.tar.gz
 
-Some mild modifications were made by Taneli Saastamoinen to make it work with
+Some mild modifications were made by Taneli & David to make it work with
 Leiningen 2.
 
 How to compile & run
