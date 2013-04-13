@@ -9,3 +9,4 @@
 /.lein-deps-sum
 
 /resources/public/js/main.js
+target

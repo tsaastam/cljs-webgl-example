@@ -24,13 +24,21 @@
 (defn on-drag-start [e]
   (swap! last-pos (constantly [(.-x e) (.-y e)])))
 
+(def cam-ob (atom nil))
+
 (defn on-drag-move [e]
   (let [pos [(.-x e) (.-y e)]
         delta-pos (vec (map - pos @last-pos))]
+    ;; for some reason, we need to switch y and x here to acquire sensible
+    ;; rotation semantics. TODO: understand this properly
     (mac/inc! (.-y (.-rotation moon)) (/ (delta-pos 0) 100))
     (mac/inc! (.-x (.-rotation moon)) (/ (delta-pos 1) 100))
     (.update moon)
     (swap! last-pos (constantly pos))))
+
+(defn on-mouse-wheel [e]
+  (mac/inc! (.-z (.-position @cam-ob)) (.-wheel e))
+  (.update @cam-ob))
 
 (defn on-error []
   (js/alert "There was an error creating the app."))
@@ -58,8 +66,10 @@
 (defn on-load [app]
   (let [canvas (.-canvas app)
         scene (.-scene app)
-        gl (.-gl app)]
+        gl (.-gl app)
+        cam (.-camera app)]
     (init canvas scene gl)
+    (reset! cam-ob cam)
     ((fn draw-and-request []
        (draw canvas scene gl)
        (js/PhiloGL.Fx.requestAnimationFrame draw-and-request)))))
@@ -76,12 +86,9 @@
   (js/PhiloGL
    "gl-canvas"
    (to-js {:camera camera
-           
            :textures textures
-           
            :events {:onDragStart on-drag-start
-                    :onDragMove on-drag-move}
-           
+                    :onDragMove on-drag-move
+                    :onMouseWheel on-mouse-wheel}
            :onError on-error
-           
            :onLoad on-load})))
