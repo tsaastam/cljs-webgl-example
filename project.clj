@@ -5,7 +5,8 @@
                  [hiccup "1.0.0"]]
   :dev-dependencies [[lein-ring "0.7.0"]]
   :ring {:handler example.routes/app}
-  :plugins [[lein-cljsbuild "0.2.4"]]
+  :plugins [[lein-cljsbuild "0.2.4"]
+            [lein-ring "0.7.0"]]
   :cljsbuild {:builds [{:source-path "src-cljs"
                         :compiler {:output-to "resources/public/js/main.js"
                                    :optimizations :simple
