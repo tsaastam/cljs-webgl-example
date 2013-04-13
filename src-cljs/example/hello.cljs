@@ -17,7 +17,7 @@
            (to-js {:nlat 30
                    :nlong 30
                    :radius 2
-                   :textures "moon.gif"})))
+                   :textures "kitty.jpg"})))
 
 (def last-pos (atom [0 0]))
 
@@ -78,9 +78,11 @@
   {:position {:x 0 :y 0 :z -7}})
 
 (def textures
-  {:src ["moon.gif"]
+  {:src ["kitty.jpg"]
    :parameters [{:name "TEXTURE_MAG_FILTER" :value "LINEAR"}
-                {:name "TEXTURE_MIN_FILTER" :value "LINEAR_MIPMAP_NEAREST" :generateMipmap true}]})
+                {:name "TEXTURE_MIN_FILTER" :value "LINEAR"}
+                {:name "TEXTURE_WRAP_S" :value "CLAMP_TO_EDGE"}
+                {:name "TEXTURE_WRAP_T" :value "CLAMP_TO_EDGE"}]})
 
 (defn webgl-start []
   (js/PhiloGL
