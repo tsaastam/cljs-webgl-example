@@ -13,11 +13,13 @@
 
         :else x))
 
+(def filename "earth.jpg")
+
 (def moon (js/PhiloGL.O3D.Sphere.
            (to-js {:nlat 30
                    :nlong 30
                    :radius 2
-                   :textures "moon.gif"})))
+                   :textures filename})))
 
 (def last-pos (atom [0 0]))
 
@@ -78,7 +80,7 @@
   {:position {:x 0 :y 0 :z -7}})
 
 (def textures
-  {:src ["moon.gif"]
+  {:src [filename]
    :parameters [{:name "TEXTURE_MAG_FILTER" :value "LINEAR"}
                 {:name "TEXTURE_MIN_FILTER" :value "LINEAR_MIPMAP_NEAREST" :generateMipmap true}]})
 
