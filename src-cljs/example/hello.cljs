@@ -13,11 +13,13 @@
 
         :else x))
 
+(def filename "kitty.jpg")
+
 (def moon (js/PhiloGL.O3D.Sphere.
            (to-js {:nlat 30
                    :nlong 30
                    :radius 2
-                   :textures "kitty.jpg"})))
+                   :textures filename})))
 
 (def last-pos (atom [0 0]))
 
@@ -78,7 +80,7 @@
   {:position {:x 0 :y 0 :z -7}})
 
 (def textures
-  {:src ["kitty.jpg"]
+  {:src [filename]
    :parameters [{:name "TEXTURE_MAG_FILTER" :value "LINEAR"}
                 {:name "TEXTURE_MIN_FILTER" :value "LINEAR"}
                 {:name "TEXTURE_WRAP_S" :value "CLAMP_TO_EDGE"}
