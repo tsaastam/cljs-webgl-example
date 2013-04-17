@@ -11,6 +11,7 @@
     (include-js "/js/main.js")]
    [:body {:onload "example.hello.webgl_start();"}
     [:h1 "Hello Moon"]
+    [:p "Drag with mouse to rotate, use mouse wheel to zoom"]
     [:canvas {:id "gl-canvas"
               :width "500"
               :height "500"}]]))

@@ -7,13 +7,11 @@
           (dorun (for [[k v] x]
                    (aset out (name k) (to-js v))))
           out)
-        
         (= (type x) (type []))
         (apply array (map to-js x))
-
         :else x))
 
-(def filename "kitty.jpg")
+(def filename "earth.jpg")
 
 (def moon (js/PhiloGL.O3D.Sphere.
            (to-js {:nlat 30
