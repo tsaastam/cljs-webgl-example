@@ -19,3 +19,5 @@ How to compile & run
     lein ring server-headless 3000
 
 Then browse to http://localhost:3000
+
+Alternatively, after "lein cljsbuild", open the file resources/public/hello.html in a browser.
