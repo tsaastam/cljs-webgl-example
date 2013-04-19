@@ -11,6 +11,11 @@ This code was originally written by Vishvajit Singh. Sources:
 Some mild modifications were made by Taneli & David to make it work with
 Leiningen 2.
 
+See it in action
+================
+
+* http://tsaastam.github.io/cljs-webgl-example/hello.html
+
 How to compile & run
 ====================
 
@@ -20,4 +25,4 @@ How to compile & run
 
 Then browse to http://localhost:3000
 
-Alternatively, after "lein cljsbuild", open the file resources/public/hello.html in a browser.
+Alternatively, after "lein cljsbuild once", open the file resources/public/hello.html in a browser.
